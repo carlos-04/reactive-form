@@ -1,0 +1,78 @@
+<h4>
+    Formularios <small>data</small></h4>
+<hr>
+<form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
+    <div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col">
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" [class.is-invalid]="nombreNoValido">
+                <small class="text-danger" *ngIf="nombreNoValido">
+                    Correo no valido
+                </small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Apellido</label>
+            <div class="col">
+                <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido" [class.is-invalid]="apellidoNoValidado">
+                <small class="text-danger" *ngIf="apellidoNoValidado">
+                    Correo no valido
+                </small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Correo</label>
+        <div class="col">
+
+            <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo" [class.is-invalid]="correoNoValidado">
+            <small class="text-danger" *ngIf="correoNoValidado">
+                Correo no valido
+            </small>
+        </div>
+    </div>
+
+    <!--Direccion-->
+    <div class="form-group row" formGroupName="direccion">
+        <label class="col-2 col-form-label"> Direccion</label>
+        <div class="form-row col">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Distrito" formControlName="distrito" [class.is-invalid]=" distritoNoValidado">
+                <small class="text-danger" *ngIf=" distritoNoValidado">
+                    Correo no valido
+                </small>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Ciudad" formControlName="ciudad" [class.is-invalid]="ciudadNoValidado">
+                <small class="text-danger" *ngIf="ciudadNoValidado">
+                    Correo no valido
+                </small>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col">
+            <button type="submit" class="btn btn-outline-primary btn-block">
+        Guardar
+      </button>
+        </div>
+    </div>
+
+</form>
+
+<hr>
+
+<pre>
+    estado Formulario: {{forma.valid}}
+</pre>
+<pre>
+    Status: {{forma.status}}
+</pre>
+<pre>
+    {{forma.value | json}}
+</pre>
